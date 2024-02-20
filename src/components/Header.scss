@@ -1,0 +1,71 @@
+@use "../styles/partials/mixins.scss" as *;
+@use "../styles/partials/variables.scss" as *;
+
+.profile {
+  position: relative;
+  &::after {
+    content: "";
+    width: 2.5rem;
+    margin-left: 20px;
+    height: 2.5rem;
+    border-bottom-right-radius: 8px;
+    background-image: url(../assets/images/profile.jpg);
+    background-size: cover;
+    position: absolute;
+    background-position: center;
+    right: 0;
+    border-top-right-radius: 8px;
+  }
+
+  &__blog {
+    padding: 0.5rem;
+    width: 6.25rem;
+    border-radius: 0.5625rem;
+    color: white;
+    text-transform: capitalize;
+    letter-spacing: 0.125rem;
+  }
+  &__btn {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
+  &__searchIcon {
+    font-size: 1.2rem;
+  }
+}
+
+.header {
+  &__mood {
+    background-color: #e74694;
+  }
+  &__link {
+    color: #333;
+    text-decoration: none;
+    text-transform: capitalize;
+    width: 100%;
+    display: inline-block;
+    padding: 0.5rem;
+    border-radius: 8px;
+  }
+  &__link--active {
+    transition: 0.8s;
+    background-color: #e74694;
+    padding: 0.5rem;
+    border-radius: 8px;
+    color: white;
+    width: 100%;
+    display: inline-block;
+  }
+  &__item {
+    width: 100%;
+    margin-top: 0.5rem;
+    text-align: center;
+    @include tablet {
+      margin: 0;
+      width: auto;
+    }
+  }
+}
