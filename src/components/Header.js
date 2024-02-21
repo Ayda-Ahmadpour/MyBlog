@@ -8,7 +8,7 @@ import { FaMoon } from "react-icons/fa";
 export default function Header() {
   const path = useLocation().pathname;
   return (
-    <Navbar fluid rounded>
+    <Navbar className="border-b-2 border-slate pt-6 pb-4">
       <Link to="/" className="flex justify-center items-center profile">
         <span className="bg-gradient-to-r from-pink-500 to-rose-300 profile__blog">
           Blogs
@@ -52,7 +52,7 @@ export default function Header() {
         <Link to="/SignIn">
           <Button color="pink">Sign In</Button>
         </Link>
-        <NavbarToggle />
+        <NavbarToggle className="ml-2" />
       </div>
       <NavbarCollapse className="">
         <li className="header__item">
