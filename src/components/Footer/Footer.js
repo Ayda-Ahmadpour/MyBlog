@@ -1,4 +1,4 @@
-import { Footer, FooterDivider } from "flowbite-react";
+import { Footer } from "flowbite-react";
 import {
   BsDribbble,
   BsFacebook,
@@ -26,10 +26,18 @@ function Footers() {
             <Footer.Icon href="#" icon={BsDribbble} />
           </div>
           <Footer.LinkGroup>
-            <Footer.Link href="#">About</Footer.Link>
-            <Footer.Link href="#">Privacy Policy</Footer.Link>
-            <Footer.Link href="#">Licensing</Footer.Link>
-            <Footer.Link href="#">Contact</Footer.Link>
+            <Footer.Link href="#" target="_blank" rel="noopener noreferrer">
+              About
+            </Footer.Link>
+            <Footer.Link href="#" target="_blank" rel="noopener noreferrer">
+              Privacy Policy
+            </Footer.Link>
+            <Footer.Link href="#" target="_blank" rel="noopener noreferrer">
+              Licensing
+            </Footer.Link>
+            <Footer.Link href="#" target="_blank" rel="noopener noreferrer">
+              Contact
+            </Footer.Link>
           </Footer.LinkGroup>
         </div>
       </div>
