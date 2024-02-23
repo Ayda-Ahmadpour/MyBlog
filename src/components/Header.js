@@ -5,18 +5,21 @@ import {
   NavbarCollapse,
   NavbarToggle,
   Dropdown,
-  DropdownToggle,
   Avatar,
 } from "flowbite-react";
 import React from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { FaMoon } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { toggleTheme } from "../redux/theme/theme";
+import { useSelector, useDispatch } from "react-redux";
+import { IoSunnySharp } from "react-icons/io5";
 
 export default function Header() {
+  const dispatch = useDispatch();
   const path = useLocation().pathname;
   const { user } = useSelector((state) => state.user);
+  const { theme } = useSelector((state) => state.theme);
   return (
     <Navbar className="border-b-2 border-slate pt-6 pb-4">
       <Link to="/" className="flex justify-center items-center profile">
@@ -56,8 +59,17 @@ export default function Header() {
         </div>
       </div>
       <div className="flex md:order-last">
-        <Button className="header__mood hidden sm:inline mr-3">
-          <FaMoon />
+        <Button
+          className="header__mood hidden sm:inline mr-3"
+          onClick={() => {
+            dispatch(toggleTheme());
+          }}
+        >
+          {theme === "light" ? (
+            <FaMoon />
+          ) : (
+            <IoSunnySharp className="text-lg" />
+          )}
         </Button>
         {user ? (
           <Dropdown
