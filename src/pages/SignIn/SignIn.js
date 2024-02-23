@@ -31,7 +31,7 @@ export default function SignIn() {
         formValue
       );
       console.log(response);
-      dispatch(successfulSignIn(response.data.user));
+      dispatch(successfulSignIn(response.data));
       navigate("/");
     } catch (error) {
       dispatch(failSignIn(error.response.data.error));

@@ -13,6 +13,7 @@ const userSlice = createSlice({
       state.user = action.payload;
       state.loading = false;
       state.error = null;
+      localStorage.setItem("user", JSON.stringify(action.payload));
     },
     failSignIn: (state, action) => {
       state.loading = false;
