@@ -1,12 +1,22 @@
 import "./Header.scss";
-import { Button, Navbar, NavbarCollapse, NavbarToggle } from "flowbite-react";
+import {
+  Button,
+  Navbar,
+  NavbarCollapse,
+  NavbarToggle,
+  Dropdown,
+  DropdownToggle,
+  Avatar,
+} from "flowbite-react";
 import React from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { FaMoon } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 export default function Header() {
   const path = useLocation().pathname;
+  const { user } = useSelector((state) => state.user);
   return (
     <Navbar className="border-b-2 border-slate pt-6 pb-4">
       <Link to="/" className="flex justify-center items-center profile">
@@ -49,9 +59,46 @@ export default function Header() {
         <Button className="header__mood hidden sm:inline mr-3">
           <FaMoon />
         </Button>
-        <Link to="/SignIn">
-          <Button color="pink">Sign In</Button>
-        </Link>
+        {user ? (
+          <Dropdown
+            arrowIcon={false}
+            className=""
+            inline
+            label={
+              <Avatar
+                rounded
+                bordered
+                color="pink"
+                size="md"
+                status="online"
+                alt="user-picture"
+                img={user.profileIMG}
+              />
+            }
+          >
+            <Dropdown.Header>
+              <span className="block text-sm">{user.username}</span>
+              <span className="block truncate text-sm font-medium">
+                {user.email}
+              </span>
+            </Dropdown.Header>
+            <Dropdown.Item as={Link} to="/Dashboard?tab=profile">
+              Dashboard
+            </Dropdown.Item>
+            <Dropdown.Item as={Link} to="/Dashboard">
+              Settings
+            </Dropdown.Item>
+            <Dropdown.Item as={Link} to="/Dashboard">
+              Earnings
+            </Dropdown.Item>
+            <Dropdown.Divider />
+            <Dropdown.Item>Sign out</Dropdown.Item>
+          </Dropdown>
+        ) : (
+          <Link to="/SignIn">
+            <Button color="pink">Sign In</Button>
+          </Link>
+        )}
         <NavbarToggle className="ml-2" />
       </div>
       <NavbarCollapse className="">
