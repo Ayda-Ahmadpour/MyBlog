@@ -1,38 +1,40 @@
 import React, { useState } from "react";
-// import "./SignIn.scss";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Alert, Spinner } from "flowbite-react";
-
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setUser,
+  successfulSignIn,
+  failSignIn,
+} from "../../redux/slice/userSlice";
 export default function SignIn() {
   const BASE_URL = process.env.REACT_APP_SERVER_URL;
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formValue, setFormValue] = useState({});
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState();
+  const { error, loading } = useSelector((state) => state.user);
+  // const [error, setError] = useState(null);
+  // const [loading, setLoading] = useState();
   const handleChange = (e) => {
     setFormValue({ ...formValue, [e.target.id]: e.target.value.trim() });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formValue.email || !formValue.password) {
-      return setError("All fields are required");
+      dispatch(failSignIn("All fields are required"));
     }
     try {
-      setError(null);
-      setLoading(true);
+      dispatch(setUser());
       const response = await axios.post(
         `${BASE_URL}/api/auth/signin`,
         formValue
       );
-      console.log(response.data.error);
       console.log(response);
-      setLoading(false);
+      dispatch(successfulSignIn(response.data.user));
       navigate("/");
     } catch (error) {
-      console.error(error);
-      setError(error.response.data.error);
-      setLoading(false);
+      dispatch(failSignIn(error.response.data.error));
     }
   };
   return (
@@ -73,10 +75,7 @@ export default function SignIn() {
           >
             {loading ? (
               <>
-                <Spinner
-                  aria-label="Alternate spinner button example"
-                  // size="sm"
-                />
+                <Spinner aria-label="Alternate spinner button example" />
                 <span className="pl-3">Loading...</span>
               </>
             ) : (
