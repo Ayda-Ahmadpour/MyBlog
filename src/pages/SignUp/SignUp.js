@@ -3,6 +3,7 @@ import "./SignUp.scss";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Alert, Spinner } from "flowbite-react";
+import GoogleBtn from "../../components/GoogleBtn/GoogleBtn";
 
 export default function SignUp() {
   const BASE_URL = process.env.REACT_APP_SERVER_URL;
@@ -96,6 +97,7 @@ export default function SignUp() {
               "Sign Up"
             )}
           </button>
+          <GoogleBtn />
         </form>
         <div className="mt-5 text-center">
           <p>

@@ -8,6 +8,7 @@ import {
   successfulSignIn,
   failSignIn,
 } from "../../redux/slice/userSlice";
+import GoogleBtn from "../../components/GoogleBtn/GoogleBtn";
 export default function SignIn() {
   const BASE_URL = process.env.REACT_APP_SERVER_URL;
   const dispatch = useDispatch();
@@ -82,6 +83,7 @@ export default function SignIn() {
               "Sign In"
             )}
           </button>
+          <GoogleBtn />
         </form>
         <div className="mt-5 text-center">
           <p>
