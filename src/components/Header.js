@@ -127,7 +127,7 @@ export default function Header() {
             className={
               path === "/Dashboard" ? "header__link--active" : "header__link"
             }
-            to={"/Dashboard"}
+            to={"/dashboard?tab=profile"}
           >
             Dashboard
           </NavLink>
