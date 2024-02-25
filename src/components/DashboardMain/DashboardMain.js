@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Button, Label, TextInput } from "flowbite-react";
+import { updateStart } from "../../redux/slice/userSlice";
 import axios from "axios";
 
 export default function DashboardMain() {
@@ -21,11 +22,13 @@ export default function DashboardMain() {
       ...formValueData,
       [e.target.id]: e.target.value.trim(),
     });
+    console.log(formValueData);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       console.log(user);
+      dispatch(updateStart());
       if (user && user._id) {
         const response = await axios.put(
           `${BASE_URL}/api/user/update/${user._id}`,

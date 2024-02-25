@@ -15,7 +15,7 @@ export default function Dashboard() {
     }
   }, [dashvoardTab.search]);
   return (
-    <div className="flex  flex-col md:flex-row min-h-screen">
+    <div className="flex  flex-col md:flex-row min-h-screen ">
       <div>
         <DashboardSideBar />
       </div>
@@ -23,7 +23,6 @@ export default function Dashboard() {
         <DashboardMain />
         {tab === "profile" && <DashboardMain />}
         {tab === "signout" && <DashboardMain />}
-        {tab === "profile" && <DashboardMain />}
       </div>
     </div>
   );
