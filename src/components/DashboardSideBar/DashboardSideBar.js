@@ -1,17 +1,11 @@
 import { Sidebar } from "flowbite-react";
-import {
-  HiArrowSmRight,
-  HiChartPie,
-  HiInbox,
-  HiTable,
-  HiUser,
-  HiViewBoards,
-} from "react-icons/hi";
+import { HiChartPie } from "react-icons/hi";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { SignOutSuccess } from "../../redux/slice/userSlice";
 import { useDispatch } from "react-redux";
+import { PiSignOut } from "react-icons/pi";
 
 export default function DashboardSideBar() {
   const { navigate } = useNavigate();
@@ -45,20 +39,8 @@ export default function DashboardSideBar() {
           <Sidebar.Item href="#" icon={HiChartPie} active={tab === "profile"}>
             Dashboard
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiViewBoards}>
-            Kanban
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiInbox}>
-            Inbox
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiUser}>
-            Users
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiArrowSmRight} onClick={handelSignOut}>
+          <Sidebar.Item href="#" icon={PiSignOut} onClick={handelSignOut}>
             Sign Out
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiTable}>
-            Sign Up
           </Sidebar.Item>
         </Sidebar.ItemGroup>
       </Sidebar.Items>

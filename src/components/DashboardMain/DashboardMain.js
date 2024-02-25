@@ -94,10 +94,6 @@ export default function DashboardMain() {
           Submit
         </Button>
       </form>
-      <div className="flex max-w-md gap-4 justify-between mt-3 w-1/2">
-        <div className="flex justify-right text-red-700">DELETE ACCOUNT</div>
-        <div className="flex justify-left text-red-700">SIGN OUT</div>
-      </div>
     </>
   );
 }
