@@ -36,7 +36,7 @@ export default function Header() {
   return (
     <Navbar className="border-b-2 border-slate pt-6 pb-4">
       <Link to="/" className="flex justify-center items-center profile">
-        <span className="bg-gradient-to-r from-pink-500 to-rose-300 profile__blog">
+        <span className="bg-gradient-to-r from-pink-500 to-rose-300 profile__blog text-left">
           Blogs
         </span>
       </Link>

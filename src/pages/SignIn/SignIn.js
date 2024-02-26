@@ -15,8 +15,6 @@ export default function SignIn() {
   const navigate = useNavigate();
   const [formValue, setFormValue] = useState({});
   const { error, loading } = useSelector((state) => state.user);
-  // const [error, setError] = useState(null);
-  // const [loading, setLoading] = useState();
   const handleChange = (e) => {
     setFormValue({ ...formValue, [e.target.id]: e.target.value.trim() });
   };
