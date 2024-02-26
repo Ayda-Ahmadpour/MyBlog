@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./SignUp.scss";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Alert, Spinner } from "flowbite-react";

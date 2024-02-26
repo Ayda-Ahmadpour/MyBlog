@@ -64,7 +64,7 @@ export default function Home() {
   };
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto px-4 min-h-screen">
       <h1 className="text-center text-3xl italic font-extrabold capitalize m-10">
         Welcome to My Blog
       </h1>
