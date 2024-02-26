@@ -8,18 +8,31 @@ import {
   Avatar,
 } from "flowbite-react";
 import React from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, Navigate, useLocation } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { FaMoon } from "react-icons/fa";
 import { toggleTheme } from "../redux/theme/theme";
 import { useSelector, useDispatch } from "react-redux";
 import { IoSunnySharp } from "react-icons/io5";
+import { SignOutSuccess } from "../redux/slice/userSlice";
+import axios from "axios";
 
 export default function Header() {
+  const BASE_URL = process.env.REACT_APP_SERVER_URL;
   const dispatch = useDispatch();
   const path = useLocation().pathname;
   const { user } = useSelector((state) => state.user);
   const { theme } = useSelector((state) => state.theme);
+  const handelSignOut = async () => {
+    try {
+      const response = await axios.post(`${BASE_URL}/api/user/signout`);
+      console.log(response);
+      dispatch(SignOutSuccess());
+      Navigate("/SignIn");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <Navbar className="border-b-2 border-slate pt-6 pb-4">
       <Link to="/" className="flex justify-center items-center profile">
@@ -97,14 +110,8 @@ export default function Header() {
             <Dropdown.Item as={Link} to="/Dashboard?tab=profile">
               Dashboard
             </Dropdown.Item>
-            <Dropdown.Item as={Link} to="/Dashboard">
-              Settings
-            </Dropdown.Item>
-            <Dropdown.Item as={Link} to="/Dashboard">
-              Earnings
-            </Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item>Sign out</Dropdown.Item>
+            <Dropdown.Item onClick={handelSignOut}>Sign out</Dropdown.Item>
           </Dropdown>
         ) : (
           <Link to="/SignIn">
@@ -130,26 +137,6 @@ export default function Header() {
             to={"/dashboard?tab=profile"}
           >
             Dashboard
-          </NavLink>
-        </li>
-        <li className="header__item">
-          <NavLink
-            className={
-              path === "/SignUp" ? "header__link--active" : "header__link"
-            }
-            to={"/SignUp"}
-          >
-            Sign Up
-          </NavLink>
-        </li>
-        <li className="header__item">
-          <NavLink
-            className={
-              path === "/SignIn" ? "header__link--active" : "header__link"
-            }
-            to={"/SignIn"}
-          >
-            Sign In
           </NavLink>
         </li>
       </NavbarCollapse>

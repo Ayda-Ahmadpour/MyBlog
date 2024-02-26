@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Button, Label, TextInput } from "flowbite-react";
 import { updateStart } from "../../redux/slice/userSlice";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function DashboardMain() {
   const { user } = useSelector((state) => state.user);
@@ -93,6 +94,17 @@ export default function DashboardMain() {
         >
           Submit
         </Button>
+
+        {user.isAdmin && (
+          <Link to={"/create-post"}>
+            <Button
+              className="w-full p-2 rounded-md bg-gradient-to-r to-pink-500 from-rose-300 text-white"
+              type="button"
+            >
+              Create a Post
+            </Button>
+          </Link>
+        )}
       </form>
     </>
   );

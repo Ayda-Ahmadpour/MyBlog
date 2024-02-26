@@ -7,6 +7,8 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import Header from "./components/Header";
 import Footers from "./components/Footer/Footer";
 import ProtectDashboard from "./components/ProtectDashboard/ProtectDashboard";
+import CreateNewPost from "./pages/CreateNewPost/CreateNewPost";
+import ProtectCreatePost from "./components/ProtectCreatePost/ProtectCreatePost";
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +19,9 @@ function App() {
         <Route path="/SignUp" element={<SignUp />} />
         <Route element={<ProtectDashboard />}>
           <Route path="/Dashboard" element={<Dashboard />} />
+        </Route>
+        <Route element={<ProtectCreatePost />}>
+          <Route path="/create-post" element={<CreateNewPost />} />
         </Route>
       </Routes>
       <Footers />
