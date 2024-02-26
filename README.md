@@ -19,7 +19,7 @@ This app is designed for individual blog owners looking for a streamlined way to
   Support for email/password authentication and OAuth with Google.<br/>
 
 - **Blog Management:<br/>**
-  Users can create, edit, delete, and add img to their blog posts.<br/>
+  Admin can create, edit, and delete to their blog posts.<br/>
   CRUD functionality for managing blog content.<br/>
 
 - **Authorization System:<br/>**
