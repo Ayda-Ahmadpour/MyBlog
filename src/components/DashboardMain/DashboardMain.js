@@ -94,7 +94,6 @@ export default function DashboardMain() {
         >
           Submit
         </Button>
-
         {user.isAdmin && (
           <Link to={"/create-post"}>
             <Button

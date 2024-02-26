@@ -25,20 +25,6 @@ function Footers() {
             <Footer.Icon href="#" icon={BsGithub} />
             <Footer.Icon href="#" icon={BsDribbble} />
           </div>
-          <Footer.LinkGroup>
-            <Footer.Link href="#" target="_blank" rel="noopener noreferrer">
-              About
-            </Footer.Link>
-            <Footer.Link href="#" target="_blank" rel="noopener noreferrer">
-              Privacy Policy
-            </Footer.Link>
-            <Footer.Link href="#" target="_blank" rel="noopener noreferrer">
-              Licensing
-            </Footer.Link>
-            <Footer.Link href="#" target="_blank" rel="noopener noreferrer">
-              Contact
-            </Footer.Link>
-          </Footer.LinkGroup>
         </div>
       </div>
     </Footer>

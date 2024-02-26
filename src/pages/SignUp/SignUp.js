@@ -87,10 +87,7 @@ export default function SignUp() {
           >
             {loading ? (
               <>
-                <Spinner
-                  aria-label="Alternate spinner button example"
-                  // size="sm"
-                />
+                <Spinner aria-label="Alternate spinner button example" />
                 <span className="pl-3">Loading...</span>
               </>
             ) : (
