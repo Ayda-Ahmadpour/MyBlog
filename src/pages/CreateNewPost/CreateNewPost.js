@@ -8,11 +8,17 @@ import { useNavigate } from "react-router-dom";
 export default function CreatePost() {
   const BASE_URL = process.env.REACT_APP_SERVER_URL;
   const [title, setTitle] = useState("");
+  const [image, setImage] = useState(null);
   const [content, setContent] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
+  };
+
+  const handleImageChange = (event) => {
+    setImage(event.target.files[0]);
   };
 
   const handleContentChange = (value) => {
@@ -23,10 +29,21 @@ export default function CreatePost() {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`${BASE_URL}/api/post/create`, {
-        title,
-        content,
-      });
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("image", image);
+      formData.append("content", content);
+
+      const response = await axios.post(
+        `${BASE_URL}/api/post/create`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
       if (response.status === 201) {
         console.log("Post created successfully:", response.data);
         navigate("/");
@@ -54,6 +71,14 @@ export default function CreatePost() {
             className="flex-1"
           />
         </div>
+        <div>
+          <input
+            type="file"
+            name="image"
+            accept="image/*"
+            onChange={handleImageChange}
+          />
+        </div>
         <ReactQuill
           theme="snow"
           placeholder="Write something..."
@@ -64,7 +89,8 @@ export default function CreatePost() {
         />
         <Button
           type="submit"
-          className="text-white bg-pink-400 hover:bg-rose-400 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800"
+          gradientDuoTone="pinkToOrange"
+          className=" w-full p-1 rounded-md bg-gradient-to-r from-pink-500 to-rose-300 text-white"
         >
           Publish
         </Button>

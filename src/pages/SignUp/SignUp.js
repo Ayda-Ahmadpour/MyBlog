@@ -37,7 +37,7 @@ export default function SignUp() {
   };
   return (
     <section className="mb-20 mt-10">
-      <div className="container max-w-xl flex-col md:flex-row md:items-center mx-auto">
+      <div className="container max-w-xl flex-col md:flex-row md:items-center mx-auto min-h-screen">
         <h1 className="text-3xl font-bold text-center ">Sign Up</h1>
         <form className="mt-10" onSubmit={handleSubmit}>
           <div className="mb-5">

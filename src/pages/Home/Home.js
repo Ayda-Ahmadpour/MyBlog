@@ -64,66 +64,80 @@ export default function Home() {
   };
 
   return (
-    <div className="container mx-auto px-4 min-h-screen">
-      <h1 className="text-center text-3xl italic font-extrabold capitalize m-10">
-        Welcome to My Blog
-      </h1>
+    <div className="bg-white">
+      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+        <h2 className="text-2xl font-bold tracking-tight text-gray-900 text-center">
+          {" "}
+          😃 welcome to the Full Stack MERN Blog Project 🌐
+        </h2>
 
-      {posts.map((post) => (
-        <Card key={post._id} href="#" className="w-full flex-row my-5 block">
-          <div className="w-full">
-            {editingPostId === post._id ? (
-              <div className="w-full flex flex-col">
-                <input
-                  type="text"
-                  name="title"
-                  value={editedPost.title}
-                  onChange={handleInputChange}
-                  className="w-full p-2 my-2 text-gray-900 border border-gray-300 rounded-md focus:ring-pink-500 focus:border-pink-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-pink-500 dark:focus:border-pink-500"
-                />
-                <textarea
-                  name="content"
-                  value={editedPost.content}
-                  onChange={handleInputChange}
-                  className="w-full p-2 my-4 text-gray-900 border border-gray-300 rounded-md focus:ring-pink-500 focus:border-pink-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-pink-500 dark:focus:border-pink-500 h-96 flex"
-                ></textarea>
-                <button
-                  onClick={handleEditSubmit}
-                  className="header__link--active"
-                >
-                  Save
-                </button>
-              </div>
-            ) : (
-              <div className="w-full flex flex-col">
-                <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center my-5">
-                  {post.title}
-                </h5>
-                <div
-                  className="font-normal text-gray-700 dark:text-gray-400"
-                  dangerouslySetInnerHTML={{ __html: post.content }}
-                ></div>
-                {user && user.isAdmin && (
-                  <div className="w-full flex justify-between mt-4">
+        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-3 xl:gap-x-4 ">
+          {posts.map((post) => (
+            <Card
+              key={post._id}
+              href="#"
+              className="w-full flex-row my-5 block relative"
+            >
+              <div className="w-full">
+                {editingPostId === post._id ? (
+                  <div className="w-full flex flex-col">
+                    <input
+                      type="text"
+                      name="title"
+                      value={editedPost.title}
+                      onChange={handleInputChange}
+                      className="w-full p-2 my-2 text-gray-900 border border-gray-300 rounded-md focus:ring-pink-500 focus:border-pink-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-slate-700 dark:focus:ring-pink-500 dark:focus:border-pink-500"
+                    />
+                    <textarea
+                      name="content"
+                      value={editedPost.content}
+                      onChange={handleInputChange}
+                      className="w-full p-2 my-4 text-gray-900 border border-gray-300 rounded-md focus:ring-pink-500 focus:border-pink-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-slate-600 dark:focus:ring-pink-500 dark:focus:border-pink-500 h-60 flex"
+                    ></textarea>
                     <button
-                      onClick={() => handleEditClick(post._id)}
-                      className="block text-center py-2 px-8 text-sm text-gray-500 border  dark:bg-pink-600 dark:hover:bg-pink-700  rounded-md border-red-400 focus:ring-pink-500 focus:border-pink-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-pink-500 dark:focus:border-pink-500"
+                      onClick={handleEditSubmit}
+                      className="header__link--active"
                     >
-                      Edit
+                      Save
                     </button>
-                    <button
-                      onClick={() => handleDeleteClick(post._id)}
-                      className="block text-center py-2 px-8 text-sm text-gray-500 border  dark:bg-pink-600 dark:hover:bg-pink-700  rounded-md border-red-400 focus:ring-pink-500 focus:border-pink-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-pink-500 dark:focus:border-pink-500"
-                    >
-                      Delete
-                    </button>
+                  </div>
+                ) : (
+                  <div className="w-full flex flex-col">
+                    <img
+                      src={`${post.imageUrl}`}
+                      alt="Post"
+                      className="mb-4 mx-auto w-80 rounded-md"
+                    />{" "}
+                    <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center my-5">
+                      {post.title}
+                    </h5>
+                    <div
+                      className="font-normal text-gray-700 dark:text-gray-400 mb-10"
+                      dangerouslySetInnerHTML={{ __html: post.content }}
+                    ></div>
+                    {user && user.isAdmin && (
+                      <div className="w-full flex justify-between -ml-6 mt-4 absolute bottom-3 p-0">
+                        <button
+                          onClick={() => handleEditClick(post._id)}
+                          className="block text-center py-2 px-8 text-sm text-gray-500 border  dark:bg-pink-600 dark:hover:bg-pink-700  rounded-md border-red-400 focus:ring-pink-500 focus:border-pink-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-pink-500 dark:focus:border-pink-500 ml-6"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleDeleteClick(post._id)}
+                          className="block text-center py-2 px-8 text-sm text-gray-500 border  dark:bg-pink-600 dark:hover:bg-pink-700  rounded-md border-red-400 focus:ring-pink-500 focus:border-pink-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-pink-500 dark:focus:border-pink-500 mr-6"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
-            )}
-          </div>
-        </Card>
-      ))}
+            </Card>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

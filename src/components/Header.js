@@ -73,7 +73,8 @@ export default function Header() {
       </div>
       <div className="flex md:order-last">
         <Button
-          className="header__mood hidden sm:inline mr-3"
+          gradientDuoTone="pinkToOrange"
+          className=" header__mood hidden sm:inline mr-3 rounded-md bg-gradient-to-r from-pink-500 to-rose-300 text-white"
           onClick={() => {
             dispatch(toggleTheme());
           }}

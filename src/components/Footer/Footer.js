@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Footers() {
   return (
-    <Footer container>
+    <Footer container rounded-none>
       <div className="w-full text-center">
         <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
           <Link to="/" className="flex profile">

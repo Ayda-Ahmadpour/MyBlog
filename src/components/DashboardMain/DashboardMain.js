@@ -84,21 +84,25 @@ export default function DashboardMain() {
             id="password1"
             type="password"
             required
-            placeholder="password"
+            placeholder="**********"
             onChange={handleChange}
+            className="text-center "
           />
         </div>
         <Button
-          className="w-full p-2 rounded-md bg-gradient-to-r from-pink-500 to-rose-300 text-white"
+          outline
+          gradientDuoTone="pinkToOrange"
           type="submit"
+          className=" w-full p-1 rounded-md bg-gradient-to-r from-pink-500 to-rose-300 text-white"
         >
           Submit
         </Button>
         {user.isAdmin && (
           <Link to={"/create-post"}>
             <Button
-              className="w-full p-2 rounded-md bg-gradient-to-r to-pink-500 from-rose-300 text-white"
               type="button"
+              gradientDuoTone="pinkToOrange"
+              className=" w-full p-1 rounded-md bg-gradient-to-r from-pink-500 to-rose-300 text-white"
             >
               Create a Post
             </Button>
