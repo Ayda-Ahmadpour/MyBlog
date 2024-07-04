@@ -9,6 +9,7 @@ import {
 } from "flowbite-react";
 import React from "react";
 import { Link, NavLink, Navigate, useLocation } from "react-router-dom";
+// import { Link, NavLink, useLocation, useHistory } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { FaMoon } from "react-icons/fa";
 import { toggleTheme } from "../redux/theme/theme";
@@ -21,6 +22,7 @@ export default function Header() {
   const BASE_URL = process.env.REACT_APP_SERVER_URL;
   const dispatch = useDispatch();
   const path = useLocation().pathname;
+  // const history = useHistory();
   const { user } = useSelector((state) => state.user);
   const { theme } = useSelector((state) => state.theme);
   const handelSignOut = async () => {
@@ -29,6 +31,7 @@ export default function Header() {
       console.log(response);
       dispatch(SignOutSuccess());
       Navigate("/SignIn");
+      // history.push("/SignIn");
     } catch (error) {
       console.log(error);
     }
@@ -124,18 +127,20 @@ export default function Header() {
       <NavbarCollapse className="">
         <li className="header__item">
           <NavLink
+            exact
             className={path === "/" ? "header__link--active" : "header__link"}
-            to={"/"}
+            to="/"
           >
             Home
           </NavLink>
         </li>
         <li className="header__item">
           <NavLink
+            exact
             className={
               path === "/Dashboard" ? "header__link--active" : "header__link"
             }
-            to={"/dashboard?tab=profile"}
+            to="/dashboard?tab=profile"
           >
             Dashboard
           </NavLink>
